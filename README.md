@@ -421,4 +421,4 @@ After this command I get an error which I tried to solve for couple of days. I c
 
 So after this error I couldn't continue with the 'Interact with contract' part. But I understood the concept overall. 
 
-And lastly I want to thank everyone who contributed to thşs bootcamp. It was really fun and informative. I am glad I got to be a part of it.
+And lastly I want to thank everyone who contributed to this bootcamp. It was really fun and informative. I am glad I got to be a part of it.
