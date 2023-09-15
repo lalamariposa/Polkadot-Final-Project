@@ -330,9 +330,37 @@ Start the second node
 
 ![polka16](https://github.com/lalamariposa/Polkadot-Final-Project/assets/119344636/13698dc8-f926-427a-ba3a-0308e4253c73)
 
+## 8. Smart contracts
+
+### Install the CLI tool
+
+ update our Rust environment
+```
+rustup component add rust-src
+```
+
+Verify whether the WebAssembly target is installed
+```
+rustup target add wasm32-unknown-unknown --toolchain nightly
+```
+
+Add rust-src compiler component 
+```
+rustup component add rust-src
+```
+
+Install the latest version of cargo-contract 
+```
+cargo install --force --locked cargo-contract --version 2.0.0-rc
+```
+
+Verify the installation and explore the commands available 
+```
+cargo contract --help
+```
 
 
-![polka17]()
+![polka17](https://github.com/lalamariposa/Polkadot-Final-Project/assets/119344636/2e414238-4020-4a9b-96b1-d5287ea372fc)
 ![polka18]()
 ![polka19]()
 
