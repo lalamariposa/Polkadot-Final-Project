@@ -204,6 +204,8 @@ For each node:
 - Add the aura authority keys to enable block production.
 - Add the grandpa authority keys to enable block finalization.
 
+For the first node: 
+
 ```
 ./target/release/node-template key insert --base-path /tmp/node01 \
 
@@ -233,13 +235,103 @@ For each node:
   --key-type gran
 ```
 
+Verify that the keys are in the keystore for node01
+
+```
+ls /tmp/node01/chains/local_testnet/keystore
+```
+
+![polka14](https://github.com/lalamariposa/Polkadot-Final-Project/assets/119344636/2e22b7a9-ed54-41ba-9256-498d464e1535)
+
+For the second node: 
+
+```
+./target/release/node-template key insert --base-path /tmp/node02 \
+
+  --chain customSpecRaw.json \
+
+  --scheme Sr25519 \
+
+  --suri <second-participant-secret-seed> \
+
+  --password-interactive \
+
+  --key-type aura
+```
+```
+./target/release/node-template key insert --base-path /tmp/node02 \
+
+  --chain customSpecRaw.json \
+
+  --scheme Ed25519 --suri <second-participant-secret-seed> \
+
+  --password-interactive \
+
+  --key-type gran
+```
+
+Verify that the keys are in the keystore for node02
+
+```
+ls /tmp/node02/chains/local_testnet/keystore
+```
+
+![polka15](https://github.com/lalamariposa/Polkadot-Final-Project/assets/119344636/27f536f8-4217-4898-a3d7-f90bfdc42add)
+
+Start the first node
+
+```
+./target/release/node-template \
+
+  --base-path /tmp/node01 \
+
+  --chain ./customSpecRaw.json \
+
+  --port 30333 \
+
+  --rpc-port 9945 \
+
+  --telemetry-url "wss://telemetry.polkadot.io/submit/ 0" \
+
+  --validator \
+
+  --rpc-methods Unsafe \
+
+  --name MyNode01 \
+
+  --password-interactive
+```
+
+Start the second node 
+
+```
+./target/release/node-template \
+
+  --base-path /tmp/node02 \
+
+  --chain ./customSpecRaw.json \
+
+  --port 30334 \
+
+  --rpc-port 9946 \
+
+  --telemetry-url 'wss://telemetry.polkadot.io/submit/ 0' \
+
+  --validator \
+
+  --rpc-methods Unsafe \
+
+  --name MyNode02 \
+
+  --bootnodes /ip4/127.0.0.1/tcp/30333/p2p/12D3KooWLmrYDLoNTyTYtRdDyZLWDe1paxzxTw5RgjmHLfzW96SX \
+
+  --password-interactive
+```
+
+![polka16](https://github.com/lalamariposa/Polkadot-Final-Project/assets/119344636/13698dc8-f926-427a-ba3a-0308e4253c73)
 
 
 
-  
-![polka14]()
-![polka15]()
-![polka16]()
 ![polka17]()
 ![polka18]()
 ![polka19]()
