@@ -349,27 +349,76 @@ Add rust-src compiler component
 rustup component add rust-src
 ```
 
+![polka17](https://github.com/lalamariposa/Polkadot-Final-Project/assets/119344636/2e414238-4020-4a9b-96b1-d5287ea372fc)
+
 Install the latest version of cargo-contract 
 ```
 cargo install --force --locked cargo-contract --version 2.0.0-rc
 ```
+
+![polka18](https://github.com/lalamariposa/Polkadot-Final-Project/assets/119344636/486d9656-1ceb-47d0-afa6-6b7cd68dcf06)
+
 
 Verify the installation and explore the commands available 
 ```
 cargo contract --help
 ```
 
+```
+cargo install contracts-node --git https://github.com/paritytech/substrate-contracts-node.git --tag v0.25.1 --force --locked 
+```
 
-![polka17](https://github.com/lalamariposa/Polkadot-Final-Project/assets/119344636/2e414238-4020-4a9b-96b1-d5287ea372fc)
-![polka18]()
-![polka19]()
+![polka19](https://github.com/lalamariposa/Polkadot-Final-Project/assets/119344636/c5d0ed53-3aff-4738-b3ad-3677aad6f124)
 
+To check that everything works fine 
+```
+substrate-contracts-node --version
+```
 
+### Create a new smart contract project
 
+Create a new project folder named “flipper”
+```
+cargo contract new flipper
+```
 
+![polka20](https://github.com/lalamariposa/Polkadot-Final-Project/assets/119344636/b3f5c35a-dce6-4ed4-ab8d-9c1edb79aefb)
 
+Test the smart contract 
+```
+cargo test
+```
 
+![polka21](https://github.com/lalamariposa/Polkadot-Final-Project/assets/119344636/009d3b1c-c9fc-4239-a0ec-d5a6665bc61b)
 
+Now we will build it
+```
+cargo contract build
+```
 
+![polka22](https://github.com/lalamariposa/Polkadot-Final-Project/assets/119344636/8bed3f69-0607-47db-92a8-97e2c34f3ca8)
 
+### Deploy contract
 
+Now that we have compiled the contract, we just need to start the node and deploy it
+
+```
+substrate-contracts-node --log info,runtime::contracts=debug 2>&1
+```
+
+![polka23](https://github.com/lalamariposa/Polkadot-Final-Project/assets/119344636/4a547ea2-37a1-4a13-a3b9-18222176a07d)
+
+Go to the flipper project folder
+
+Build the contract using cargo contract build
+```
+cargo contract instantiate --constructor new --args "false" --suri //Alice --salt $(date +%s)
+```
+
+After this command I get an error which I tried to solve for couple of days. I checked the internet and asked on discord but couldn't solve it. 
+
+![polka24](https://github.com/lalamariposa/Polkadot-Final-Project/assets/119344636/372652cd-c284-4100-881d-e5ab74e11533)
+
+So after this error I couldn't continue with the 'Interact with contract' part. But I understood the concept overall. 
+
+And lastly I want to thank everyone who contributed to thşs bootcamp. It was really fun and informative. I am glad I got to be a part of it.
